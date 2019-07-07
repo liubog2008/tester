@@ -1,0 +1,20 @@
+- description: "normal case"
+  labels:
+    type: fast
+  data:
+    in: aaa
+    expected: aaa
+
+- description: "empty case"
+  labels:
+    type: fast
+  data:
+    in: ""
+    expected: ""
+
+- description: "loooooooooooong case"
+  labels:
+    type: fast
+  data:
+    in: "looooooooooooooooooooooong"
+    expected: "looooooooooooooooooooooong"
