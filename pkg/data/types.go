@@ -35,11 +35,25 @@ type TestCaseData struct {
 	// Labels defines labels of case
 	Labels map[string]string `json:"labels,omitempty"`
 	// Data defines raw custom defined data of case
-	Data json.RawMessage `json:"data"`
+	Data map[string]json.RawMessage `json:"data,omitempty"`
+	// References defines references of external docs
+	References []Reference `json:"refs,omitempty"`
+}
+
+// Reference defines ref of external docs
+type Reference struct {
+	Name string `json:"name"`
+	Ref  string `json:"ref"`
 }
 
 // TestCaseParser defines a parser to parse test case from bytes
 type TestCaseParser interface {
 	// Parse parse bytes to test cases
 	Parse(body []byte) ([]TestCaseData, error)
+}
+
+// RefManager defines manager to manage refs of data
+type RefManager interface {
+	// Ref returns data referenced
+	Ref(dir, ref string) ([]byte, error)
 }

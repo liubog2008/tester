@@ -10,7 +10,7 @@ There are some features:
 
 ```go
 func TestEcho(t *testing.T) {
-	tester.Test(t, testEcho)
+	tester.Test(t, new(EchoTestCase))
 }
 
 type EchoTestCase struct {
@@ -18,10 +18,8 @@ type EchoTestCase struct {
 	Expected string `json:"expected"`
 }
 
-func testEcho(t *testing.T, tc data.TestCase) {
-	c := EchoTestCase{}
-	require.NoError(t, tc.Load(&c))
-	assert.Equal(t, c.Expected, Echo(c.In), tc.Description())
+func (c *EchoTestCase) Test(t *testing.T) {
+	assert.Equal(t, c.Expected, Echo(c.In))
 }
 ```
 See `examples/echo` for more detail.

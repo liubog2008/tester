@@ -39,14 +39,18 @@ func TestJSONParser(t *testing.T) {
 					Labels: map[string]string{
 						"aaa": "bbb",
 					},
-					Data: json.RawMessage(`{"xxx":"yyy"}`),
+					Data: map[string]json.RawMessage{
+						"xxx": json.RawMessage(`"yyy"`),
+					},
 				},
 				{
 					Description: "yyy",
 					Labels: map[string]string{
 						"ccc": "ddd",
 					},
-					Data: json.RawMessage(`{"mmm":"nnn"}`),
+					Data: map[string]json.RawMessage{
+						"mmm": json.RawMessage(`"nnn"`),
+					},
 				},
 			},
 		},
@@ -61,7 +65,9 @@ func TestJSONParser(t *testing.T) {
 			expected: []TestCaseData{
 				{
 					Description: "xxx",
-					Data:        json.RawMessage(`{"xxx":"yyy"}`),
+					Data: map[string]json.RawMessage{
+						"xxx": json.RawMessage(`"yyy"`),
+					},
 				},
 			},
 		},
@@ -101,7 +107,7 @@ func TestJSONParser(t *testing.T) {
 					Labels: map[string]string{
 						"aaa": "bbb",
 					},
-					Data: json.RawMessage(`{}`),
+					Data: map[string]json.RawMessage{},
 				},
 			},
 		},
@@ -135,7 +141,9 @@ func TestYAMLParser(t *testing.T) {
 					Labels: map[string]string{
 						"aaa": "bbb",
 					},
-					Data: json.RawMessage(`{"xxx":"yyy"}`),
+					Data: map[string]json.RawMessage{
+						"xxx": json.RawMessage(`"yyy"`),
+					},
 				},
 			},
 		},
@@ -150,7 +158,9 @@ func TestYAMLParser(t *testing.T) {
 			expected: []TestCaseData{
 				{
 					Description: "xxx",
-					Data:        json.RawMessage(`{"xxx":"yyy"}`),
+					Data: map[string]json.RawMessage{
+						"xxx": json.RawMessage(`"yyy"`),
+					},
 				},
 			},
 		},
