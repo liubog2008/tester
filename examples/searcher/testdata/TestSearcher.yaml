@@ -1,0 +1,23 @@
+- description: "aaa to AAA"
+  data:
+    key: aaa
+    found: true
+    value: AAA
+  refs:
+  - name: kvs
+    ref: list.yaml
+- description: "bbb to BBB"
+  data:
+    key: bbb
+    found: true
+    value: BBB
+  refs:
+  - name: kvs
+    ref: list.yaml
+- description: "xxx not found"
+  data:
+    key: xxx
+    found: false
+  refs:
+  - name: kvs
+    ref: list.yaml
