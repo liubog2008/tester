@@ -73,11 +73,11 @@ func (c *testCase) merge() (map[string]json.RawMessage, error) {
 		switch c.format {
 		case JSONFormat:
 			if err := json.Unmarshal(body, &raw); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("cant' unmarshal ref %s: %v", ref.Name, err)
 			}
 		case YAMLFormat:
 			if err := yaml.Unmarshal(body, &raw); err != nil {
-				return nil, err
+				return nil, fmt.Errorf("cant' unmarshal ref %s: %v", ref.Name, err)
 			}
 		}
 		merged[ref.Name] = raw
